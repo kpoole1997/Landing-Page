@@ -1,123 +1,519 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slothy T Hoffman — Developer & Open Source Creator</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Temple of Montezuma - Official Game & Landing Page</title>
+    <style>
+        body {
+            background-color: #120a06;
+            color: #e6d5bc;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 5px 0;
+            letter-spacing: 2px;
+            color: #d4af37;
+            text-shadow: 2px 2px #000;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #a89378;
+        }
+        #game-container {
+            position: relative;
+            border: 4px solid #8c6239;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            background: #1c1109;
+        }
+        canvas {
+            display: block;
+            background: linear-gradient(to bottom, #0f0805, #1f120a);
+        }
+        .ui-bar {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .controls-hint {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #a89378;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.4;
+        }
+        #audio-btn {
+            margin-top: 10px;
+            background: #8c6239;
+            color: #fff;
+            border: 2px solid #d4af37;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        #audio-btn:hover {
+            background: #a67c52;
+        }
+        .about-section {
+            margin-top: 30px;
+            max-width: 800px;
+            background: #1c1109;
+            border: 2px solid #54361c;
+            padding: 20px;
+            border-radius: 6px;
+            line-height: 1.6;
+        }
+        .about-section h2 {
+            color: #d4af37;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <!-- Header / Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-bold text-lg tracking-tight hover:text-indigo-400 transition">
-                <i class="fa-solid fa-code mr-2 text-indigo-500"></i>kpoole1997.dev
-            </a>
-            <nav class="flex items-center gap-6 text-sm font-medium">
-                <a href="#projects" class="text-slate-400 hover:text-white transition">Projects</a>
-                <a href="https://github.com/kpoole1997" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg transition flex items-center gap-2">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
-            </nav>
-        </div>
+    <header>
+        <h1>TEMPLE OF MONTEZUMA</h1>
+        <div class="subtitle">An Epic Ancient Ruins Adventure & Platformer</div>
     </header>
+    
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="450"></canvas>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-6 max-w-5xl mx-auto text-center md:text-left flex flex-col md:flex-row items-center gap-12">
-        <div class="flex-1 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 text-xs font-medium">
-                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Open Source Creator
-            </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                Building tools for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">web & open source.</span>
-            </h1>
-            <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
-                Hi, I'm Slothy T Hoffman (kpoole1997). I focus on building scalable applications, developer utilities, and tracking systems. Explore my featured repositories below.
-            </p>
-            <div class="flex items-center justify-center md:justify-start gap-4 pt-2">
-                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3 rounded-xl transition shadow-lg shadow-indigo-600/20">
-                    Explore Projects
-                </a>
-                <a href="https://github.com/kpoole1997" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium px-6 py-3 rounded-xl transition flex items-center gap-2">
-                    <i class="fa-brands fa-github text-lg"></i> Follow on GitHub
-                </a>
-            </div>
-        </div>
-        <!-- Profile / Avatar Card Placeholder -->
-        <div class="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 border border-slate-800 p-2 flex items-center justify-center shadow-2xl">
-            <div class="w-full h-full rounded-2xl bg-slate-900 flex items-center justify-center text-slate-600">
-                <i class="fa-solid fa-user-code text-6xl text-indigo-400/50"></i>
-            </div>
-        </div>
-    </section>
+    <div class="ui-bar">
+        Score: <span id="scoreVal">0</span> | Gems: <span id="gemsVal">0</span>/5 | Lives: <span id="livesVal">3</span>
+    </div>
+    
+    <button id="audio-btn">🎻 ENABLE ORCHESTRAL SCORE</button>
+    
+    <div class="controls-hint">
+        <strong>A/D</strong> to Run | <strong>W / Space</strong> to Jump | <strong>Click</strong> to Grapple & Swing | <strong>S</strong> to Reel Down | <strong>Enter</strong> to Restart
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 max-w-5xl mx-auto border-t border-slate-900">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Featured Repositories</h2>
-                <p class="text-slate-400 text-sm mt-1">A selection of my open-source work and side projects.</p>
-            </div>
-            <a href="https://github.com/kpoole1997?tab=repositories" target="_blank" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium mt-4 md:mt-0 flex items-center gap-1 transition">
-                View all repositories <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-        </div>
+    <div class="about-section">
+        <h2>About the Game</h2>
+        <p>Welcome to the depths of the <strong>Temple of Montezuma</strong>. Traverse treacherous ancient traps, collect glowing mystical artifact gems, use your grappling hook to swing across bottomless pits, and make your way to the golden exit door to secure your legendary fortune!</p>
+    </div>
 
-        <!-- Repository Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Project Card: Prospecting-Dashboard -->
-            <div class="bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 flex flex-col justify-between transition group">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2 text-slate-200 font-semibold group-hover:text-indigo-400 transition">
-                            <i class="fa-regular fa-folder text-indigo-400"></i> Prospecting-Dashboard
-                        </div>
-                        <div class="flex items-center gap-3 text-xs text-slate-400">
-                            <span class="flex items-center gap-1"><i class="fa-solid fa-star text-amber-400"></i> —</span>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                        A dedicated dashboard system built to organize and streamline prospecting workflows and data management.
-                    </p>
-                </div>
-                <div>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs px-2.5 py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800/50">JavaScript / Web</span>
-                    </div>
-                    <div class="flex items-center gap-4 text-sm font-medium">
-                        <a href="https://github.com/kpoole1997/Prospecting-Dashboard" target="_blank" class="text-slate-300 hover:text-white transition flex items-center gap-1.5">
-                            <i class="fa-brands fa-github"></i> Repository
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
 
-            <!-- Placeholder for your next project -->
-            <div class="bg-slate-900/40 border border-dashed border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition group hover:border-slate-700">
-                <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-indigo-400 mb-3 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-                <h3 class="text-slate-300 font-semibold mb-1">More Projects Coming Soon</h3>
-                <p class="text-slate-500 text-xs max-w-xs">Check out my GitHub profile to see everything else I'm currently working on.</p>
-            </div>
+        let score = 0;
+        let gemsCollected = 0;
+        let lives = 3;
+        let gameState = 'PLAYING';
+        const worldWidth = 2400;
 
-        </div>
-    </section>
+        const keys = { left: false, right: false, up: false, down: false };
+        let mouse = { x: 0, y: 0, activeGrapple: null };
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-900 py-12 px-6 text-center text-sm text-slate-500">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 Slothy T Hoffman (kpoole1997). Open source enthusiast.</p>
-            <div class="flex items-center gap-4">
-                <a href="https://github.com/kpoole1997" target="_blank" class="hover:text-slate-300 transition text-lg"><i class="fa-brands fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
+        window.addEventListener('keydown', e => {
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = true;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = true;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') keys.up = true;
+            if (e.code === 'KeyS' || e.code === 'ArrowDown') keys.down = true;
+            if (e.code === 'Enter' && (gameState === 'GAMEOVER' || gameState === 'VICTORY')) {
+                resetGame();
+            }
+        });
 
+        window.addEventListener('keyup', e => {
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') keys.left = false;
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') keys.right = false;
+            if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') {
+                keys.up = false;
+                if (e.code === 'Space') mouse.activeGrapple = null;
+            }
+            if (e.code === 'KeyS' || e.code === 'ArrowDown') keys.down = false;
+        });
+
+        canvas.addEventListener('mousemove', e => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mousedown', () => {
+            if (gameState === 'PLAYING') {
+                const worldMouseX = mouse.x + camera.x;
+                const worldMouseY = mouse.y + camera.y;
+                mouse.activeGrapple = { x: worldMouseX, y: worldMouseY };
+                playSound('grapple');
+            }
+        });
+
+        let player = {
+            x: 80,
+            y: 350,
+            vx: 0,
+            vy: 0,
+            width: 28,
+            height: 40,
+            speed: 4.5,
+            jumpPower: -10.5,
+            gravity: 0.45,
+            grounded: false
+        };
+
+        let camera = { x: 0, y: 0, width: canvas.width, height: canvas.height };
+
+        const platforms = [
+            { x: 0, y: 410, w: 700, h: 40 },
+            { x: 180, y: 310, w: 130, h: 20 },
+            { x: 380, y: 240, w: 150, h: 20 },
+            { x: 580, y: 170, w: 120, h: 20 },
+            { x: 800, y: 410, w: 600, h: 40 },
+            { x: 750, y: 280, w: 100, h: 20 },
+            { x: 920, y: 210, w: 140, h: 20 },
+            { x: 1150, y: 280, w: 120, h: 20 },
+            { x: 1500, y: 410, w: 900, h: 40 },
+            { x: 1420, y: 310, w: 110, h: 20 },
+            { x: 1600, y: 220, w: 130, h: 20 },
+            { x: 1820, y: 160, w: 150, h: 20 },
+            { x: 2050, y: 240, w: 120, h: 20 }
+        ];
+
+        const hazards = [
+            { x: 550, y: 395, w: 80, h: 15 },
+            { x: 850, y: 395, w: 100, h: 15 },
+            { x: 1650, y: 395, w: 120, h: 15 }
+        ];
+
+        let gems = [
+            { x: 220, y: 270, collected: false },
+            { x: 440, y: 200, collected: false },
+            { x: 980, y: 170, collected: false },
+            { x: 1650, y: 180, collected: false },
+            { x: 2100, y: 200, collected: false }
+        ];
+
+        const exitDoor = { x: 2250, y: 310, w: 50, h: 100 };
+
+        function resetGame() {
+            score = 0;
+            gemsCollected = 0;
+            lives = 3;
+            gameState = 'PLAYING';
+            respawnPlayer();
+            gems.forEach(g => g.collected = false);
+            updateUI();
+        }
+
+        function respawnPlayer() {
+            player.x = 80;
+            player.y = 350;
+            player.vx = 0;
+            player.vy = 0;
+            mouse.activeGrapple = null;
+        }
+
+        function updateUI() {
+            document.getElementById('scoreVal').innerText = score;
+            document.getElementById('gemsVal').innerText = gemsCollected;
+            document.getElementById('livesVal').innerText = lives;
+        }
+
+        let audioCtx = null;
+        document.getElementById('audio-btn').addEventListener('click', () => {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                startOrchestralScore();
+                document.getElementById('audio-btn').innerText = '🎵 ORCHESTRAL SCORE ACTIVE';
+                document.getElementById('audio-btn').style.background = '#4a7c59';
+            }
+        });
+
+        function playSound(type) {
+            if (!audioCtx) return;
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            let now = audioCtx.currentTime;
+
+            if (type === 'jump') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(180, now);
+                osc.frequency.exponentialRampToValueAtTime(400, now + 0.15);
+                gain.gain.setValueAtTime(0.12, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.15);
+            } else if (type === 'gem') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(659.25, now);
+                osc.frequency.setValueAtTime(987.77, now + 0.1);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.3);
+            } else if (type === 'hurt') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(140, now);
+                osc.frequency.linearRampToValueAtTime(50, now + 0.3);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.3);
+            } else if (type === 'grapple') {
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(350, now);
+                osc.frequency.exponentialRampToValueAtTime(700, now + 0.1);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.1);
+            }
+            osc.start(now);
+            osc.stop(now + 0.3);
+        }
+
+        function startOrchestralScore() {
+            const notes = [110.00, 130.81, 164.81, 196.00, 220.00];
+            let step = 0;
+            setInterval(() => {
+                if (!audioCtx || gameState !== 'PLAYING') return;
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(notes[step % notes.length], audioCtx.currentTime);
+                
+                let filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+                osc.connect(filter);
+                filter.connect(gain);
+                gain.connect(audioCtx.destination);
+                gain.gain.setValueAtTime(0.025, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.4);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.4);
+                step++;
+            }, 1400);
+        }
+
+        function update() {
+            if (gameState !== 'PLAYING') return;
+
+            if (keys.left) player.vx = -player.speed;
+            else if (keys.right) player.vx = player.speed;
+            else player.vx *= 0.78;
+
+            if (keys.up && player.grounded) {
+                player.vy = player.jumpPower;
+                player.grounded = false;
+                playSound('jump');
+            }
+
+            if (mouse.activeGrapple) {
+                let dx = mouse.activeGrapple.x - (player.x + player.width / 2);
+                let dy = mouse.activeGrapple.y - player.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (keys.up && dist > 50) mouse.activeGrapple.y -= 3;
+                if (keys.down) mouse.activeGrapple.y += 3;
+
+                let pullStrength = 0.18;
+                player.vx += dx * pullStrength * 0.04;
+                player.vy += dy * pullStrength * 0.04;
+            }
+
+            player.vy += player.gravity;
+            player.x += player.vx;
+            player.y += player.vy;
+
+            player.grounded = false;
+            platforms.forEach(plat => {
+                if (player.x + player.width > plat.x && 
+                    player.x < plat.x + plat.w &&
+                    player.y + player.height >= plat.y && 
+                    player.y + player.height <= plat.y + 16 && 
+                    player.vy >= 0) {
+                    player.y = plat.y - player.height;
+                    player.vy = 0;
+                    player.grounded = true;
+                }
+            });
+
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > worldWidth) player.x = worldWidth - player.width;
+            if (player.y > canvas.height + 50) loseLife();
+
+            hazards.forEach(h => {
+                if (player.x + player.width > h.x && player.x < h.x + h.w &&
+                    player.y + player.height > h.y && player.y < h.y + h.h) {
+                    loseLife();
+                }
+            });
+
+            gems.forEach(gem => {
+                if (!gem.collected) {
+                    let gx = gem.x + 12, gy = gem.y + 12;
+                    let dist = Math.hypot((player.x + player.width/2) - gx, (player.y + player.height/2) - gy);
+                    if (dist < 22) {
+                        gem.collected = true;
+                        score += 200;
+                        gemsCollected++;
+                        updateUI();
+                        playSound('gem');
+                    }
+                }
+            });
+
+            if (player.x + player.width > exitDoor.x && player.x < exitDoor.x + exitDoor.w &&
+                player.y + player.height > exitDoor.y && player.y + player.height < exitDoor.y + exitDoor.h) {
+                gameState = 'VICTORY';
+            }
+
+            camera.x = player.x - camera.width / 2 + player.width / 2;
+            if (camera.x < 0) camera.x = 0;
+            if (camera.x > worldWidth - camera.width) camera.x = worldWidth - camera.width;
+        }
+
+        function loseLife() {
+            lives--;
+            updateUI();
+            playSound('hurt');
+            if (lives <= 0) gameState = 'GAMEOVER';
+            else respawnPlayer();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.translate(-camera.x, -camera.y);
+
+            ctx.fillStyle = '#26170e';
+            for (let i = 200; i < worldWidth; i += 450) {
+                ctx.fillRect(i, 0, 60, 410);
+                ctx.fillStyle = '#1c1009';
+                ctx.fillRect(i + 10, 20, 40, 370);
+                ctx.fillStyle = '#26170e';
+            }
+
+            platforms.forEach(plat => {
+                ctx.fillStyle = '#54361c';
+                ctx.fillRect(plat.x, plat.y, plat.w, plat.h);
+                ctx.strokeStyle = '#d4af37';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(plat.x, plat.y, plat.w, plat.h);
+                
+                ctx.fillStyle = '#3e2713';
+                ctx.fillRect(plat.x + 10, plat.y + 4, 25, 4);
+                ctx.fillRect(plat.x + plat.w - 35, plat.y + 4, 25, 4);
+            });
+
+            hazards.forEach(h => {
+                ctx.fillStyle = '#b53737';
+                for (let i = 0; i < h.w; i += 12) {
+                    ctx.beginPath();
+                    ctx.moveTo(h.x + i, h.y + h.h);
+                    ctx.lineTo(h.x + i + 6, h.y);
+                    ctx.lineTo(h.x + i + 12, h.y + h.h);
+                    ctx.fill();
+                }
+            });
+
+            gems.forEach(gem => {
+                if (!gem.collected) {
+                    ctx.fillStyle = '#00ffcc';
+                    ctx.shadowColor = '#00ffcc';
+                    ctx.shadowBlur = 12;
+                    ctx.beginPath();
+                    let gx = gem.x + 12, gy = gem.y + 12;
+                    ctx.moveTo(gx, gy - 10);
+                    ctx.lineTo(gx + 9, gy);
+                    ctx.lineTo(gx, gy + 10);
+                    ctx.lineTo(gx - 9, gy);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            });
+
+            ctx.fillStyle = '#4a2e18';
+            ctx.fillRect(exitDoor.x, exitDoor.y, exitDoor.w, exitDoor.h);
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(exitDoor.x, exitDoor.y, exitDoor.w, exitDoor.h);
+            ctx.fillStyle = '#d4af37';
+            ctx.beginPath();
+            ctx.arc(exitDoor.x + exitDoor.w - 10, exitDoor.y + exitDoor.h / 2, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (mouse.activeGrapple) {
+                ctx.strokeStyle = '#ffd700';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(player.x + player.width / 2, player.y + player.height / 2);
+                ctx.lineTo(mouse.activeGrapple.x, mouse.activeGrapple.y);
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(mouse.activeGrapple.x, mouse.activeGrapple.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.fillStyle = '#d97736';
+            ctx.fillRect(player.x, player.y + 12, player.width, player.height - 12);
+            ctx.fillStyle = '#332211';
+            ctx.fillRect(player.x + 4, player.y + player.height - 10, player.width - 8, 10);
+            ctx.fillStyle = '#f5deb3';
+            ctx.fillRect(player.x + 5, player.y + 3, 18, 12);
+            ctx.fillStyle = '#422811';
+            ctx.fillRect(player.x + 2, player.y - 2, 24, 5);
+            ctx.fillRect(player.x + 6, player.y - 7, 16, 6);
+
+            ctx.restore();
+
+            if (gameState === 'GAMEOVER') {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#ff4d4d';
+                ctx.font = 'bold 30px Courier New';
+                ctx.textAlign = 'center';
+                ctx.fillText('TEMPLE TRAP - GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+                ctx.fillStyle = '#e6d5bc';
+                ctx.font = '16px Courier New';
+                ctx.fillText('Press [ENTER] to Try Again', canvas.width / 2, canvas.height / 2 + 20);
+                ctx.textAlign = 'left';
+            } else if (gameState === 'VICTORY') {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#d4af37';
+                ctx.font = 'bold 30px Courier New';
+                ctx.textAlign = 'center';
+                ctx.fillText('MONTEZUMA\'S TREASURE CONQUERED!', canvas.width / 2, canvas.height / 2 - 20);
+                ctx.fillStyle = '#e6d5bc';
+                ctx.font = '16px Courier New';
+                ctx.fillText(`Final Score: ${score} - Press [ENTER] to Play Again`, canvas.width / 2, canvas.height / 2 + 20);
+                ctx.textAlign = 'left';
+            }
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        resetGame();
+        gameLoop();
+    </script>
 </body>
 </html>
